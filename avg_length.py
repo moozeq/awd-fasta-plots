@@ -12,7 +12,8 @@ def main():
 
     out = {database: fasta.parse_fasta(database) for database in args.databases}
 
-    organisms = [organism_name for organism_name in out.keys()]
+    organisms = [organism_name[:-len('.fasta')] if organism_name.endswith('.fasta') else organism_name for organism_name
+                 in out.keys()]
     averages = [info['average'] for info in out.values()]
     stdevs = [[info['stdev'] / 2 for info in out.values()]]
 
