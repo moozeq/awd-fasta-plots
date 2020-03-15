@@ -15,7 +15,7 @@ def main():
     organisms = [organism_name[:-len('.fasta')] if organism_name.endswith('.fasta') else organism_name for organism_name
                  in out.keys()]
     averages = [info['average'] for info in out.values()]
-    stdevs = [[info['stdev'] / 2 for info in out.values()]]
+    stdevs = [info['stdev'] / 2 for info in out.values()]
 
     # Make a dataset:
     height = averages
@@ -31,10 +31,14 @@ def main():
     # Add label on y-axis
     plt.ylabel('Average protein sequence length')
 
+    # Add title
+    plt.title(f'Average protein sequence lengths for selected organisms')
+
     # Create error bars based on standard deviation
     plt.errorbar(organisms, averages, yerr=stdevs, linestyle='None', ecolor='red')
 
-    # Show graphic
+    # Save and show graphic
+    plt.savefig(f'avg_length.png')
     plt.show()
 
 
