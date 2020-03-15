@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 def show_plt(lengths, organism, limit: int):
-    plt.hist(lengths, 10, facecolor='blue', alpha=0.5)
+    plt.hist(lengths, 1000, facecolor='blue', alpha=0.5)
     plt.axvline(np.mean(lengths), color='green', linestyle='dashed', linewidth=1)
     plt.axvline(np.median(lengths), color='red', linestyle='dashed', linewidth=1)
     min_ylim, max_ylim = plt.ylim()
